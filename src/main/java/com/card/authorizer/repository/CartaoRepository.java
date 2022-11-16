@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface CartaoRepository extends JpaRepository<CartaoEntity, Long> {
 
     Optional<CartaoEntity> findById(Long id);
+
+    Optional<CartaoEntity> findSaldoById(Long id);
 }

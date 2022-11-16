@@ -8,4 +8,6 @@ public interface CartaoService {
 
     List<CartaoEntity> listar();
     void gerarNovoCartao();
+
+    Object findById(Long id);
 }

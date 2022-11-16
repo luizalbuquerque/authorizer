@@ -2,11 +2,36 @@
 
 ## Description
 
-You can use this API for authorize you card or not ^^
+You can use this API for authorize you card
 
-## Exemples to use API
+## API Documentation
 
-COntiue.........
+#### Return a list of document metadata
+
+```http
+  You can check if the system was started!
+  
+  USE ->  http://localhost:8080/authorizer/health-check
+```
+
+  ```http
+  You can use this to acess Swagger aplication, and see what you prefer!
+  
+  USE ->  http://localhost:8080/swagger-ui/index.html
+  
+```
+
+#### Retorna um item
+
+```http
+  GET /api/items/${id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `id`      | `string` | **Obrigatório**. O ID do item que você quer |
+
+```http
 
 
 ## Getting Started
