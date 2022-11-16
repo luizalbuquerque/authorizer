@@ -16,12 +16,12 @@ public class CartaoResource {
     @Autowired
     private CartaoService cartaoService;
 
-    @GetMapping(value = "/listar")
+    @GetMapping
     public List<CartaoEntity> listar() {
         return cartaoService.listar();
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void gerar() {
         cartaoService.gerarNovoCartao();
@@ -31,5 +31,10 @@ public class CartaoResource {
     public ResponseEntity<Object> findById(@PathVariable Long id) {
         return ResponseEntity.ok(cartaoService.findById(id));
     }
+
+//    @GetMapping(value = "/{numeroCartao}")
+//    public ResponseEntity<Object> obterSaldoCartao(@PathVariable String numeroCartao){
+//        return ResponseEntity.ok(cartaoService.obterSaldoCartao(numeroCartao));
+//    }
 
 }

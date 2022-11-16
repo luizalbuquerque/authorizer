@@ -1,6 +1,7 @@
 package com.card.authorizer.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.Instant;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ public class TransacaoEntity {
     @Column
     private String tipoTransacao;
 
-    @Column
+    @NotNull
     private String status;
 
     @Column
@@ -28,6 +29,9 @@ public class TransacaoEntity {
     @Column
     private Instant updatedAt;
 
+    @ManyToOne
+    @JoinColumn(name="cartao_id", nullable = false)
+    private CartaoEntity cartao;
 
     public TransacaoEntity() {
     }
@@ -111,4 +115,5 @@ public class TransacaoEntity {
     public int hashCode() {
         return Objects.hash(transacaoId);
     }
+
 }

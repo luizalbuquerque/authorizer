@@ -10,4 +10,5 @@ public interface CartaoService {
     void gerarNovoCartao();
 
     Object findById(Long cartaoId);
+//    Object obterSaldoCartao(String numeroCartao);
 }

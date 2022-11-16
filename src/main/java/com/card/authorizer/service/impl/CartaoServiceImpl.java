@@ -1,9 +1,7 @@
 package com.card.authorizer.service.impl;
 
-import com.card.authorizer.dto.CartaoDTO;
 import com.card.authorizer.entity.CartaoEntity;
 import com.card.authorizer.exeption.BusinessException;
-import com.card.authorizer.exeption.ResourceNotFoundException;
 import com.card.authorizer.repository.CartaoRepository;
 import com.card.authorizer.service.CartaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +38,11 @@ public class CartaoServiceImpl implements CartaoService {
         return cartaoRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(CARTAO_NAO_ENCONTRADO));
     }
+
+//    @Override
+//    public Object obterSaldoCartao(String numeroCartao){
+//        return cartaoRepository.findByNumeroCartao(numeroCartao);
+//    }
 
     // Gerador da numeração cartão aleatório
     public String geradorNumeroCartao() {

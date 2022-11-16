@@ -4,6 +4,7 @@ package com.card.authorizer.entity;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -33,6 +34,10 @@ public class CartaoEntity {
 
     public CartaoEntity() {
     }
+
+    @OneToMany(mappedBy = "cartao")
+    private List<TransacaoEntity> transacoes;
+
 
     public CartaoEntity(Long cartaoId, String numeroCartao, String password, double saldo, Instant createdAt, Instant updatedAt) {
         this.cartaoId = cartaoId;
@@ -100,6 +105,15 @@ public class CartaoEntity {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<TransacaoEntity> getTransacoes() {
+        return transacoes;
+    }
+
+    public CartaoEntity setEvents(List<TransacaoEntity> transacoes) {
+        this.transacoes = transacoes;
+        return this;
     }
 
     @Override
