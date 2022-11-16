@@ -2,9 +2,7 @@ package com.card.authorizer.entity;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "transacao")
@@ -12,7 +10,8 @@ public class TransacaoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "transacao_id")
+    private Long transacaoId;
 
     @Column
     private String tipoTransacao;
@@ -23,30 +22,31 @@ public class TransacaoEntity {
     @Column
     private double valorTransacao;
 
-    // Com a anotação abaixo, a coluna salva sempre em UTC (neutro),
-    // os clients front que devem tratar o timezone desejado (como o h2-console faz por exemplo)
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @Column
     private Instant createdAt;
 
-    // Com a anotação abaixo, a coluna salva sempre em UTC (neutro),
-    // os clients front que devem tratar o timezone desejado (como o h2-console faz por exemplo)
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @Column
     private Instant updatedAt;
 
-    //Set, ao contrário do List, não aceita repetições
-    //Essa coleção não deve estar no construtor com parâmetros e nem ter o setter
-    @ManyToMany //Muitos pra muitos, com uma tabela associativa
-    @JoinTable(name = "cartao", //Referencia a tabela associativa
-            joinColumns = @JoinColumn(name = "product_id"), //Pega pelo campo da entidade atual
-            inverseJoinColumns = @JoinColumn(name = "id")) //Pega pelo campo da entidade da coleção anotada
-    private Set<CartaoEntity> categories = new HashSet<>();
 
-    public Long getId() {
-        return id;
+    public TransacaoEntity() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public TransacaoEntity(Long transacaoId, String tipoTransacao, String status, double valorTransacao, Instant createdAt, Instant updatedAt) {
+        this.transacaoId = transacaoId;
+        this.tipoTransacao = tipoTransacao;
+        this.status = status;
+        this.valorTransacao = valorTransacao;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Long getTransacaoId() {
+        return transacaoId;
+    }
+
+    public void setTransacaoId(Long transacaoId) {
+        this.transacaoId = transacaoId;
     }
 
     public String getTipoTransacao() {
@@ -89,13 +89,11 @@ public class TransacaoEntity {
         this.updatedAt = updatedAt;
     }
 
-    //sempre antes de criar o registro
     @PrePersist
     public void prePersist() {
         createdAt = Instant.now();
     }
 
-    //sempre antes de atualizar o registro
     @PreUpdate
     public void preUpdate() {
         updatedAt = Instant.now();
@@ -106,11 +104,11 @@ public class TransacaoEntity {
         if (this == o) return true;
         if (!(o instanceof TransacaoEntity)) return false;
         TransacaoEntity entity = (TransacaoEntity) o;
-        return Objects.equals(id, entity.id);
+        return Objects.equals(transacaoId, entity.transacaoId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(transacaoId);
     }
 }

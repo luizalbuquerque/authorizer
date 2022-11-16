@@ -13,7 +13,8 @@ public class CartaoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "cartao_id")
+    private Long cartaoId;
 
     @Column(unique = true)
     private String numeroCartao ;
@@ -24,39 +25,31 @@ public class CartaoEntity {
     @Column
     private double saldo;
 
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @Column
     private Instant createdAt;
 
-    // Com a anotação abaixo, a coluna salva sempre em UTC (neutro),
-    // os clients front que devem tratar o timezone desejado (como o h2-console faz por exemplo)
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @Column
     private Instant updatedAt;
 
-    // Define que o mapeamento ta feito pela entidade do tipo do Set
-    // Passando como argumento o nome do campo da outra entidade
-    // Onde ta configurado o mapeamento
-    @ManyToMany(mappedBy = "cartao")
-    private Set<TransacaoEntity> transacao = new HashSet<>();
-
-
-    //sempre antes de criar o registro
-    @PrePersist
-    public void prePersist() {
-        createdAt = Instant.now();
+    public CartaoEntity() {
     }
 
-    //sempre antes de atualizar o registro
-    @PreUpdate
-    public void preUpdate() {
-        updatedAt = Instant.now();
+    public CartaoEntity(Long cartaoId, String numeroCartao, String password, double saldo, Instant createdAt, Instant updatedAt) {
+        this.cartaoId = cartaoId;
+        this.numeroCartao = numeroCartao;
+        this.password = password;
+        this.saldo = saldo;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
-    public Long getId() {
-        return id;
+
+    public Long getCartaoId() {
+        return cartaoId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCartaoId(Long cartaoId) {
+        this.cartaoId = cartaoId;
     }
 
     public String getNumeroCartao() {
@@ -83,6 +76,16 @@ public class CartaoEntity {
         this.saldo = saldo;
     }
 
+    @PrePersist
+    public void prePersist() {
+        createdAt = Instant.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = Instant.now();
+    }
+
     public Instant getCreatedAt() {
         return createdAt;
     }
@@ -99,25 +102,17 @@ public class CartaoEntity {
         this.updatedAt = updatedAt;
     }
 
-    public Set<TransacaoEntity> getTransacao() {
-        return transacao;
-    }
-
-    public void setTransacao(Set<TransacaoEntity> transacao) {
-        this.transacao = transacao;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CartaoEntity)) return false;
         CartaoEntity entity = (CartaoEntity) o;
-        return Objects.equals(id, entity.id);
+        return Objects.equals(cartaoId, entity.cartaoId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(cartaoId);
     }
 
 }
