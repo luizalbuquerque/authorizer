@@ -1,8 +1,12 @@
 package com.card.authorizer.dto;
 
 import com.card.authorizer.entity.CartaoEntity;
+import com.card.authorizer.entity.TransacaoEntity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class CartaoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -12,6 +16,7 @@ public class CartaoDTO implements Serializable {
     private String password;
     private double saldo;
 
+    private List<TransacaoDTO> transacoes = new ArrayList<>();
 
     public CartaoDTO() {
     }
@@ -23,12 +28,20 @@ public class CartaoDTO implements Serializable {
         this.saldo = entity.getSaldo();
     }
 
-    public Long getCartaoId() {
+    public CartaoDTO(Long id, String numeroCartao, String password, double saldo, List<TransacaoDTO> transacoes) {
+        this.id = id;
+        this.numeroCartao = numeroCartao;
+        this.password = password;
+        this.saldo = saldo;
+        this.transacoes = transacoes;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setCartaoId(Long cartaoId) {
-        this.id = cartaoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNumeroCartao() {
@@ -54,4 +67,13 @@ public class CartaoDTO implements Serializable {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
+
+    public List<TransacaoDTO> getTransacoes() {
+        return transacoes;
+    }
+
+    public void setTransacoes(List<TransacaoDTO> transacoes) {
+        this.transacoes = transacoes;
+    }
+
 }

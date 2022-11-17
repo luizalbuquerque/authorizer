@@ -38,7 +38,6 @@ public class CartaoEntity {
     @OneToMany(mappedBy = "cartao")
     private List<TransacaoEntity> transacoes;
 
-
     public CartaoEntity(Long cartaoId, String numeroCartao, String password, double saldo, Instant createdAt, Instant updatedAt) {
         this.cartaoId = cartaoId;
         this.numeroCartao = numeroCartao;
@@ -111,9 +110,8 @@ public class CartaoEntity {
         return transacoes;
     }
 
-    public CartaoEntity setEvents(List<TransacaoEntity> transacoes) {
+    public void setTransacoes(List<TransacaoEntity> transacoes) {
         this.transacoes = transacoes;
-        return this;
     }
 
     @Override

@@ -30,7 +30,7 @@ public class TransacaoEntity {
     private Instant updatedAt;
 
     @ManyToOne
-    @JoinColumn(name="cartao_id", nullable = false)
+    @JoinColumn(name = "cartao_id")
     private CartaoEntity cartao;
 
     public TransacaoEntity() {
@@ -91,6 +91,14 @@ public class TransacaoEntity {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public CartaoEntity getCartao() {
+        return cartao;
+    }
+
+    public void setCartao(CartaoEntity cartao) {
+        this.cartao = cartao;
     }
 
     @PrePersist

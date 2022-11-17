@@ -6,9 +6,8 @@ import java.util.List;
 
 public interface CartaoService {
 
-    List<CartaoEntity> listar();
-    void gerarNovoCartao();
-
-    Object findById(Long cartaoId);
+    public List<CartaoEntity> listar();
+    public void gerarNovoCartao();
+    public Object findById(Long cartaoId);
 //    Object obterSaldoCartao(String numeroCartao);
 }
