@@ -12,6 +12,8 @@ import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TransacaoServiceImpl implements TransacaoService {
 
@@ -22,7 +24,20 @@ public class TransacaoServiceImpl implements TransacaoService {
     private CartaoRepository cartaoRepository;
 
     @Override
-    public TransacaoDTO debitar(TransacaoDTO dto) {
-        return null;
+    public TransacaoDTO debitar(TransacaoDTO transacaoDTO) {
+
+
+        List<CartaoEntity> cartoes = cartaoRepository.findAll();
+
+
+
+        if (transacao.getStatus() == AccountClosureStatus.REQUESTED
+                && accountClosure.getCoreBankingStatus() == ACCOUNT_CANCELED
+                && accountClosure.getProcessorStatus() == ACCOUNT_CLOSED) {
+            accountClosure.setStatus(AccountClosureStatus.EFFECTIVE);
+            accountService.updateStatus(accountClosure.getAccount().getUuid(), AccountStatus.CANCELED);
+            accountClosureCommunicationService.sendCancelationSuccessEmail(accountClosure);
+        }
+
     }
 }

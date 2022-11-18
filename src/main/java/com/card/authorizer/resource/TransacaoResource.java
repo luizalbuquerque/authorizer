@@ -17,8 +17,7 @@ public class TransacaoResource {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public ResponseEntity<TransacaoDTO> insert(@RequestBody TransacaoDTO dto) {
-        dto = transacaoService.debitar(dto);
+    public ResponseEntity<TransacaoDTO> insert(@RequestParam String numeroCartao, String senhaCartao,  String valorTransacao) {
         return null;
     }
 }

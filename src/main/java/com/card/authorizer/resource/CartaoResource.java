@@ -32,9 +32,4 @@ public class CartaoResource {
         return ResponseEntity.ok(cartaoService.findById(id));
     }
 
-//    @GetMapping(value = "/{numeroCartao}")
-//    public ResponseEntity<Object> obterSaldoCartao(@PathVariable String numeroCartao){
-//        return ResponseEntity.ok(cartaoService.obterSaldoCartao(numeroCartao));
-//    }
-
 }
