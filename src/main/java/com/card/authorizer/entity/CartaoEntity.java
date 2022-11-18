@@ -1,12 +1,9 @@
 package com.card.authorizer.entity;
 
-
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "cartao")
@@ -20,7 +17,7 @@ public class CartaoEntity {
     @Column(unique = true)
     private String numeroCartao ;
 
-    @Column(unique = true)
+    @Column
     private String password;
 
     @Column
@@ -34,8 +31,8 @@ public class CartaoEntity {
 
     public CartaoEntity() {
     }
-
-    @OneToMany(mappedBy = "cartao")
+    @OneToMany
+    @JoinColumn(name = "cartao_id") // Esta coluna está na tabela "cartao".
     private List<TransacaoEntity> transacoes;
 
     public CartaoEntity(Long cartaoId, String numeroCartao, String password, double saldo, Instant createdAt, Instant updatedAt) {
