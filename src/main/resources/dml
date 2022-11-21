@@ -8,12 +8,12 @@ insert into cartao (created_at, numero_cartao, password, saldo) values (current_
 
 insert into cartao (created_at, numero_cartao, password, saldo) values (current_date ,'387297654432', '1468', 1000.00);
 
-insert into transacao (created_at, status, tipo_transacao, valor_transacao) values (current_date, 'Em Analise', 'Debito', 1000.00);
+insert into transacao (created_at, status, tipo_transacao, valor_transacao, cartao_id) values (current_date, 'Em Analise', 'Debito', 1000.00, 1);
 
-insert into transacao (created_at, status, tipo_transacao, valor_transacao) values (current_date, 'Em Analise', 'Debito', 600.00);
+insert into transacao (created_at, status, tipo_transacao, valor_transacaom, cartao_id) values (current_date, 'Em Analise', 'Debito', 600.00, 2);
 
-insert into transacao (created_at, status, tipo_transacao, valor_transacao) values (current_date, 'Aprovado', 'Debito', 131.00);
+insert into transacao (created_at, status, tipo_transacao, valor_transacao, cartao_id) values (current_date, 'Aprovado', 'Debito', 131.00, 3);
 
-insert into transacao (created_at, status, tipo_transacao, valor_transacao) values (current_date, 'Em Analise', 'Debito', 420.10);
+insert into transacao (created_at, status, tipo_transacao, valor_transacao, cartao_id) values (current_date, 'Em Analise', 'Debito', 420.10, 4);
 
-insert into transacao (created_at, status, tipo_transacao, valor_transacao) values (current_date, 'Aprovado', 'Debito', 525.90);
+insert into transacao (created_at, status, tipo_transacao, valor_transacao, cartao_id) values (current_date, 'Aprovado', 'Debito', 525.90, 5);
