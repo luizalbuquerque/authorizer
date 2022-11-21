@@ -1,0 +1,9 @@
+insert into cartao (created_at, numero_cartao, password, saldo) values (current_date ,'897654536617', '8857', 560.00);
+
+insert into cartao (created_at, numero_cartao, password, saldo) values (current_date ,'786487598432', '6761', 900.00);
+
+insert into cartao (created_at, numero_cartao, password, saldo) values (current_date ,'237764589212', '9568', 2345.00);
+
+insert into cartao (created_at, numero_cartao, password, saldo) values (current_date ,'998765463782', '6732', 430.00);
+
+insert into cartao (created_at, numero_cartao, password, saldo) values (current_date ,'387297654432', '1468', 1000.00);
