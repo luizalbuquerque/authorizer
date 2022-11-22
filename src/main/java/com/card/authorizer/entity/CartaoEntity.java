@@ -29,6 +29,9 @@ public class CartaoEntity {
     @Column
     private Instant updatedAt;
 
+    @Column
+    private String statusCartao;
+
     public CartaoEntity() {
     }
     @OneToMany

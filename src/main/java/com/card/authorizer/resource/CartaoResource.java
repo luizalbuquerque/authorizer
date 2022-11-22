@@ -31,5 +31,5 @@ public class CartaoResource {
     public ResponseEntity<Object> findById(@PathVariable Long id) {
         return ResponseEntity.ok(cartaoService.findById(id));
     }
-
+    
 }

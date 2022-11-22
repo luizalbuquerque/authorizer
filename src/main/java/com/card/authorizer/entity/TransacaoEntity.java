@@ -17,8 +17,8 @@ public class  TransacaoEntity {
     @Column
     private String tipoTransacao;
 
-    @NotNull
-    private String status;
+    @Column
+    private String statusTransacao;
 
     @Column
     private double valorTransacao;
@@ -39,7 +39,7 @@ public class  TransacaoEntity {
     public TransacaoEntity(Long transacaoId, String tipoTransacao, String status, double valorTransacao, Instant createdAt, Instant updatedAt) {
         this.transacaoId = transacaoId;
         this.tipoTransacao = tipoTransacao;
-        this.status = status;
+        this.statusTransacao = status;
         this.valorTransacao = valorTransacao;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -62,11 +62,11 @@ public class  TransacaoEntity {
     }
 
     public String getStatus() {
-        return status;
+        return statusTransacao;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.statusTransacao = status;
     }
 
     public double getValorTransacao() {
