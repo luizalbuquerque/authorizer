@@ -39,11 +39,6 @@ public class CartaoServiceImpl implements CartaoService {
                 .orElseThrow(() -> new BusinessException(CARTAO_NAO_ENCONTRADO));
     }
 
-//    @Override
-//    public Object obterSaldoCartao(String numeroCartao){
-//        return cartaoRepository.findByNumeroCartao(numeroCartao);
-//    }
-
     // Gerador da numeração cartão aleatório
     public String geradorNumeroCartao() {
         StringBuilder text = new StringBuilder();

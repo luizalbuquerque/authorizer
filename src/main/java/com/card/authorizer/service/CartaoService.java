@@ -9,5 +9,4 @@ public interface CartaoService {
     public List<CartaoEntity> listar();
     public void gerarNovoCartao();
     public Object findById(Long cartaoId);
-//    Object obterSaldoCartao(String numeroCartao);
 }

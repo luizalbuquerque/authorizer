@@ -8,6 +8,8 @@ public class ConstantUtils {
     public static final String CARTAO_DUPLICADO = "{cartao.validacao.duplicado}";
     public static final String CARTAO_NAO_ENCONTRADO = "{cartao.nao.encontrado}";
 
+    public static final String TRANSACAO_NAO_ENCONTRADO = "{transaco.nao.encontrado}";
+
 
 
 }
